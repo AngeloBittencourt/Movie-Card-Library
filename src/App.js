@@ -6,12 +6,14 @@ import { EditMovie, MovieDetails, MovieList, NewMovie, NotFound } from './pages/
 function App() {
   return (
     <Router>
-      <div>Movie Card Library CRUD</div>
+      <header className="movie-card-header">
+        <h1 className="page-title">Movie Card Library CRUD</h1>
+      </header>
       <Switch>
         <Route path="/" exact component={ MovieList } />
         <Route path="/movies/new" component={ NewMovie } />
-        <Route path="/movies/:id/edit" component={ EditMovie } />
-        <Route path="/movies/:id" component={ MovieDetails } />
+        <Route path="/movies/:id/edit" render={ (props) => <EditMovie { ...props } /> } />
+        <Route path="/movies/:id" render={ (props) => <MovieDetails { ...props } /> } />
         <Route path="*" exact component={ NotFound } />
       </Switch>
     </Router>
