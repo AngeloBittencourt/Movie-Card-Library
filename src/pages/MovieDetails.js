@@ -47,12 +47,8 @@ class MovieDetails extends Component {
         <p>{ `Storyline: ${movie.storyline}` }</p>
         <p>{ `Genre: ${movie.genre}` }</p>
         <p>{ `Rating: ${movie.rating}` }</p>
-        <Link to={ `/movies/${movie.id}/edit` }>
-          <button type="button">  EDITAR </button>
-        </Link>
-        <Link to="/">
-          <button type="button">VOLTAR </button>
-        </Link>
+        <Link className="btn-type" to={ `/movies/${movie.id}/edit` }>EDITAR</Link>
+        <Link className="btn-type" to="/">VOLTAR</Link>
       </div>
     );
   }
