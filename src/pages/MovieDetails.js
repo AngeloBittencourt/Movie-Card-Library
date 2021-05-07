@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
@@ -9,21 +9,21 @@ class MovieDetails extends Component {
 
     this.state = {
       loading: true,
-      movies: [],
+      movie: undefined,
     };
   }
 
   componentDidMount() {
-    this.fetchMovies();
+    this.fetchMovie();
   }
 
-  fetchMovies = async () => {
-    const { getMovies } = movieAPI;
-
-    const movies = await getMovies();
+  fetchMovie = async () => {
+    const { getMovie } = movieAPI;
+    const { match: { params: { id } } } = this.props;
+    const movie = await getMovie(id);
     this.setState({
       loading: false,
-      movies,
+      movie,
     });
   }
 
@@ -31,21 +31,30 @@ class MovieDetails extends Component {
     // Change the condition to check the state
     // if (true) return <Loading />;
 
-    const { storyline, imagePath, genre, rating, subtitle } = {};
-    const { movies, loading } = this.state;
+    const { movie, loading } = this.state;
+
+    if (loading === true) {
+      return <Loading />;
+    }
 
     return (
       <div data-testid="movie-details">
-        { loading ? <Loading /> : <div>
-          <img alt="Movie Cover" src={ `../${imagePath}` } />
-          <p>{ `Subtitle: ${subtitle}` }</p>
-          <p>{ `Storyline: ${storyline}` }</p>
-          <p>{ `Genre: ${genre}` }</p>
-          <p>{ `Rating: ${rating}` }</p>
-                                  </div> }
+        <img alt="Movie Cover" src={ `../${movie.imagePath}` } />
+        <p>{ `Subtitle: ${movie.subtitle}` }</p>
+        <p>{ `Storyline: ${movie.storyline}` }</p>
+        <p>{ `Genre: ${movie.genre}` }</p>
+        <p>{ `Rating: ${movie.rating}` }</p>
       </div>
     );
   }
 }
+
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.number,
+    }),
+  }).isRequired,
+};
 
 export default MovieDetails;
