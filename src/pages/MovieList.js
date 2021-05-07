@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import MovieCard from '../components/MovieCard';
 import Loading from '../components/Loading';
 

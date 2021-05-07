@@ -215,7 +215,7 @@ textarea {
   margin-right: 10px;
   max-height: 40em;
   min-height: 8em;
-  width: 20em
+  width: 20em;
 }
 
 select {
@@ -246,4 +246,3 @@ select {
   background-color: #343a40;
   padding: 3rem 1.5rem;
 }
-
