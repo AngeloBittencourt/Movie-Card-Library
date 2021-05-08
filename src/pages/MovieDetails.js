@@ -12,7 +12,7 @@ class MovieDetails extends Component {
 
     this.state = {
       loading: true,
-      movie: undefined,
+      movie: {},
     };
   }
 
