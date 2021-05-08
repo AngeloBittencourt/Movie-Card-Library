@@ -30,6 +30,12 @@ class MovieDetails extends Component {
     });
   }
 
+  handleDelete = () => {
+    const { movie: { id } } = this.state;
+    const { deleteMovie } = movieAPI;
+    deleteMovie(id);
+  }
+
   render() {
     // Change the condition to check the state
     // if (true) return <Loading />;
@@ -49,7 +55,7 @@ class MovieDetails extends Component {
         <p>{ `Genre: ${movie.genre}` }</p>
         <p>{ `Rating: ${movie.rating}` }</p>
         <Link className="btn-type" to={ `/movies/${movie.id}/edit` }>EDITAR</Link>
-        <Link className="btn-type" to="/">DELETAR</Link>
+        <Link className="btn-type" onClick={ this.handleDelete } to="/">DELETAR</Link>
         <Link className="btn-type" to="/">VOLTAR</Link>
       </div>
     );
