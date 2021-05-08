@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 
 import { EditMovie, MovieDetails, MovieList, NewMovie, NotFound } from './pages/index';
 
@@ -18,6 +18,7 @@ function App() {
         <Route path="/movies/:id" render={ (props) => <MovieDetails { ...props } /> } />
         <Route component={ NotFound } />
       </Switch>
+      <Link className="btn-type" to="/movies/new">ADICIONAR CARTÃO</Link>
     </Router>
   );
 }
