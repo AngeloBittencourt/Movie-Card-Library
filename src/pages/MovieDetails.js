@@ -43,11 +43,13 @@ class MovieDetails extends Component {
     return (
       <div className="movie-details" data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${movie.imagePath}` } />
+        <p>{ `Title: ${movie.title}` }</p>
         <p>{ `Subtitle: ${movie.subtitle}` }</p>
         <p>{ `Storyline: ${movie.storyline}` }</p>
         <p>{ `Genre: ${movie.genre}` }</p>
         <p>{ `Rating: ${movie.rating}` }</p>
         <Link className="btn-type" to={ `/movies/${movie.id}/edit` }>EDITAR</Link>
+        <Link className="btn-type" to="/">DELETAR</Link>
         <Link className="btn-type" to="/">VOLTAR</Link>
       </div>
     );
