@@ -166,7 +166,6 @@ class MovieForm extends React.Component {
     return (
       <div>
         <form>
-          { console.log(this.checkFields())}
           {this.renderTitleInput()}
           {this.renderSubtitleInput()}
           {this.renderImagePathInput()}
