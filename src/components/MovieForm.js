@@ -4,6 +4,12 @@ import PropTypes from 'prop-types';
 class MovieForm extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      title: '',
+      subtitle: '',
+      imagePath: '',
+      rating: '',
+    };
     this.state = { ...props.movie };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -13,13 +19,20 @@ class MovieForm extends React.Component {
     onSubmit(this.state);
   }
 
+  checkFields() {
+    const { title, subtitle, storyline, imagePath, rating } = this.state;
+    if (!title || !subtitle || !storyline || !imagePath || !rating) {
+      return true;
+    }
+    return false;
+  }
+
   updateMovie(field, newValue) {
     this.setState({ [field]: newValue });
   }
 
   renderTitleInput() {
     const { title } = this.state;
-
     return (
       <div>
         <label htmlFor="movie_title">
@@ -138,8 +151,10 @@ class MovieForm extends React.Component {
     return (
       <div>
         <button
+          className="btn-type"
           type="button"
           onClick={ this.handleSubmit }
+          disabled={ this.checkFields() }
         >
           Submit
         </button>
@@ -151,6 +166,7 @@ class MovieForm extends React.Component {
     return (
       <div>
         <form>
+          { console.log(this.checkFields())}
           {this.renderTitleInput()}
           {this.renderSubtitleInput()}
           {this.renderImagePathInput()}
