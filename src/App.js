@@ -21,6 +21,6 @@ function App() {
       <Link className="btn-type" to="/movies/new">ADICIONAR CARTÃO</Link>
     </Router>
   );
-}
+};
 
 export default App;
