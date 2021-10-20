@@ -5,7 +5,6 @@
 
 Movie Cards CRUD é um Web App de CRUD de cartões com informações sobre filmes em React.
 
-
 # Instruções para rodar o projeto em sua máquina:
   
   1. Clone o projeto em um diretório na sua máquina utilizando o seguinte comando no terminal:
