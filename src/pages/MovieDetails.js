@@ -27,6 +27,7 @@ class MovieDetails extends Component {
     this.setState({
       loading: false,
       movie,
+      path: movie.imagePath,
     });
   }
 
@@ -40,12 +41,27 @@ class MovieDetails extends Component {
     // Change the condition to check the state
     // if (true) return <Loading />;
 
-    const { movie, loading } = this.state;
+    const { movie, loading, path } = this.state;
 
     if (loading === true) {
       return <Loading />;
     }
 
+    if (path.startsWith('http')) {
+      return (
+        <div className="movie-details" data-testid="movie-details">
+          <img alt="Movie Cover" src={ movie.imagePath } width="680" />
+          <p>{ `Title: ${movie.title}` }</p>
+          <p>{ `Subtitle: ${movie.subtitle}` }</p>
+          <p>{ `Storyline: ${movie.storyline}` }</p>
+          <p>{ `Genre: ${movie.genre}` }</p>
+          <p>{ `Rating: ${movie.rating}` }</p>
+          <Link className="btn-type" to={ `/movies/${movie.id}/edit` }>EDITAR</Link>
+          <Link className="btn-type" onClick={ this.handleDelete } to="/">DELETAR</Link>
+          <Link className="btn-type" to="/">VOLTAR</Link>
+        </div>
+      );
+    }
     return (
       <div className="movie-details" data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${movie.imagePath}` } />
